@@ -1,0 +1,21 @@
+.countryGrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 400px);
+    gap: 20px;
+    justify-content: center;
+    padding: 2rem;
+}
+.countryGrid a{
+    text-decoration: none;
+    color: black;
+}
+
+.countryGrid .loadingGif{
+    width: 350px;
+    height: 325px;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+}

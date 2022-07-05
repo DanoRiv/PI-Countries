@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, COUNTRY_DETAILS, SEARCH_COUNTRY, CLEAR_PAGE, CREATE_ACTIVITY } from "./actionTypes";
+import { GET_COUNTRIES, COUNTRY_DETAILS, SEARCH_COUNTRY, CLEAR_PAGE, CLEAR_ERROR, CREATE_ACTIVITY, SORT_AZ, SORT_POPULATION, SORT_CONTINENT, SORT_ACTIVITY } from "./actionTypes";
 import axios from 'axios';
 
 export const getCountries = ()=>{
@@ -33,8 +33,43 @@ export const countryByName = (search) =>{
         .catch(error=> dispatch({type: SEARCH_COUNTRY, payload: {error: error.response.data}}))
     }
 }
+export const createActivity = (activity) =>{
+    return async dispatch=>{
+        await axios.post('http://localhost:3001/activity', activity)
+        dispatch({type: CREATE_ACTIVITY})
+    }
+}
+export const sortAlpha = (payload)=>{
+    return{
+        type: SORT_AZ,
+        payload
+    }
+}
+export const sortPopulation = (payload)=>{
+    return{
+        type: SORT_POPULATION,
+        payload
+    }
+}
+export const filterContinent = (payload)=>{
+    return{
+        type: SORT_CONTINENT,
+        payload
+    }
+}
+export const filterActivity = (payload)=>{
+    return{
+        type: SORT_ACTIVITY,
+        payload
+    }
+}
 export const clearPage = () =>{
     return {
         type: CLEAR_PAGE
+    }
+}
+export const clearError = () =>{
+    return {
+        type: CLEAR_ERROR
     }
 }

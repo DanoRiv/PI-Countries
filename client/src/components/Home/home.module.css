@@ -1,9 +1,16 @@
 .homeContainer{
     top: 4rem;
     position: absolute;
-    margin-top: 4rem;
+    margin-top: 3rem;
     display: inline-block;
     width: 100%;
     align-content: center;
     justify-content: center;
+    background-color: #caf0f8;
+}
+
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    margin: auto 50px;
 }

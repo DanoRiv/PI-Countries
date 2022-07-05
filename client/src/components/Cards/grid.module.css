@@ -4,7 +4,31 @@
     gap: 20px;
     justify-content: center;
     padding: 2rem;
+    margin: 2rem auto;
+
 }
+.countrycard{
+  padding: 10px 10px;
+  background: hsla(0, 0%, 100%, .3);
+  line-height: 1.5;
+  border-radius: 10px;
+  box-shadow: 5px 3px 30px grey;
+  overflow: hidden;
+    margin: auto;
+}
+
+.countrycard::before {
+  content: '';
+  margin: -35px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  filter: blur(20px);
+  z-index: -1;
+}
+
 .countryGrid a{
     text-decoration: none;
     color: black;

@@ -1,5 +1,5 @@
 .nav{
-    background-color: #fff;
+    background-color: #005f73;
     display: block;
     position: fixed;
     top: 0.5rem;
@@ -19,7 +19,7 @@
     display: block;
     padding: 15px;
     text-decoration: none;
-    color: #aaa;
+    color: #ced4da;
     font-weight: 800;
     text-transform: uppercase;
     margin: 0 0.5rem;
@@ -30,7 +30,7 @@
 }
 
 .navLink:hover{
-    color: #91640F;
+    color: #fefae0;
 }
 
 .navLink:after{
@@ -45,7 +45,7 @@
     height: 1px;
     content: '.';
     color: transparent;
-    background-color: #F1C40F;
+    background-color: #BB3E03;
     visibility: none;
     opacity: 0;
     z-index: -1;
@@ -55,4 +55,5 @@
     opacity: 1;
     visibility: visible;
     height: 100%;
+    text-decoration:underline;
 }

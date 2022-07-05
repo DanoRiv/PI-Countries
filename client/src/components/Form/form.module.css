@@ -1,0 +1,30 @@
+.formContainer {
+    margin-top: 6rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+}
+
+.formBox {
+    background-color: #38b81f;
+    width: 60%;
+    height: 100%;
+    margin: 0, auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.formBox h3 {
+    text-align: center;
+    font-weight: 700;
+}
+
+.formBox label {
+    text-align: left;
+    display: block;
+}

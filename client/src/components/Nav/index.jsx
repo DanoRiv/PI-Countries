@@ -1,14 +1,25 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import style from './nav.module.css'
 import SearchBar from '../Search'
+import { useDispatch } from 'react-redux';
+import { getCountries } from '../../redux/actions';
 
 function Nav({setPage}) {
+
+  const location = useLocation();
+
+  const dispatch = useDispatch();
+  const handleRestart = ()=>{
+    dispatch(getCountries())
+    location.pathname === '/countries' && setPage(1)
+  }
+
   return (
     <div className={style.nav}>
     <ul>
       <li>
-      <Link to='/countries' className={style.navLink}>
+      <Link to='/countries' className={style.navLink} onClick={handleRestart}>
         Home
       </Link>
       </li>

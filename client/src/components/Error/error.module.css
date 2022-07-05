@@ -1,0 +1,50 @@
+.errorContainer {
+    width: 100%;
+    height: 80vh;
+    background-image: url('../../images/6325254.jpg');
+    background-size: 100% 100%;
+    background-position:top;
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    align-items:flex-start;
+    display: flex;
+    justify-content:center;
+}
+
+.button{
+    margin: 10px auto;
+    background-color: #111827;
+    border: 1px solid transparent;
+    border-radius: .75rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    padding: .75rem 1.2rem;
+    text-align: center;
+    transition-duration: .2s;
+    transition-property: background-color,border-color,color,fill,stroke;
+    transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: auto;
+  }
+  
+  .button a{
+      text-decoration: none;
+  }
+  
+  .button:hover {
+    background-color: #374151;
+  }
+  
+  .button:focus {
+    box-shadow: none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }

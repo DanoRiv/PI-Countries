@@ -1,0 +1,23 @@
+.loadingGif{
+    width: 350px;
+    height: 325px;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    top: 4rem;
+    margin-top: 3rem;
+    margin: auto;
+}
+
+.detailsContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.details{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,11 +1,11 @@
 @keyframes slideRight {
     0% {
         opacity: 0;
-        transform:translateY(-100%);
+        transform:translateX(-100%);
      }
     100%{
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(30);
     }
 }
 
@@ -15,8 +15,8 @@
     background-image: url('../../images/landing-bg.jpg');
     background-size: 100% 100%;
     /* background-size: cover; */
-    align-items:center;
     display: flex;
+    align-items:left;
     justify-content:left;
 }
 
@@ -27,27 +27,71 @@
     animation-fill-mode:forwards;
     animation-delay: 0.5s;
     display: flex;
-    width: 100%;
+    width: 30%;
     height: 100vh;
-    justify-content:center;
-    align-items:flex-end;
+    justify-content:right;
+    align-items:center;
+    padding: 10px 5px;
+    background: hsla(0, 0%, 100%, .3);
+    line-height: 1.5;
+    border-radius: 10px;
+    box-shadow: 5px 3px 30px black;
+    overflow: hidden;
 
 }
 
 .button{
-    border: 4px;
-    background-color: rgb(147, 156, 156);
-    border-radius: 16px;
-    margin-bottom: 25px;
-    width: 10rem;
-    height: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 5;
-    color: black;
-    text-decoration: none;
-    font-weight: 700;
+  background-color: #111827;
+  border: 1px solid transparent;
+  border-radius: .75rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  padding: .75rem 1.2rem;
+  text-align: center;
+  transition-duration: .2s;
+  transition-property: background-color,border-color,color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
 }
-    
+
+.button a{
+    text-decoration: none;
+}
+
+.button:hover {
+  background-color: #374151;
+}
+
+.button:focus {
+  box-shadow: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.buttonContainer::before {
+    content: '';
+    margin: -35px;
+    top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  filter: blur(20px);
+  z-index: -1;
+}
+
+@media (min-width: 768px) {
+  .button {
+    padding: .75rem 1.5rem;
+  }
+}
 

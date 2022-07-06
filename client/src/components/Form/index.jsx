@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { createActivity } from '../../redux/actions';
+import { Link, useHistory } from 'react-router-dom';
+import { clearError, createActivity, getCountries } from '../../redux/actions';
 import Nav from '../Nav';
 import style from './form.module.css'
 
@@ -10,6 +10,10 @@ function CreateActivity() {
   const countries = useSelector(state => state.countries);
   const history = useHistory();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCountries())
+  }, [dispatch]);
 
   const [selected, setSelected] = useState([]);
   const [durationString, setDurationString] = useState({durationNum: 0, durationText: ""});
@@ -23,9 +27,9 @@ function CreateActivity() {
 
   const [validate, setValidate] = useState({
     name: "",
-    difficulty: 0,
+    difficulty: "",
     durationNum: "",
-    country: []
+    country: ""
   });
 
   /* changes on the normal inputs */
@@ -35,6 +39,8 @@ function CreateActivity() {
       [e.target.name]: e.target.value,
     });
   }
+
+  /* changes on the difficulty slider input */
   function handleDifficulty(e) {
     setValues({
       ...values,
@@ -42,11 +48,11 @@ function CreateActivity() {
     });
   }
 
-  /* changes on the normal inputs */
+  /* changes on the duration inputs */
   function handleDuration(e){
     setDurationString({ ...durationString, [e.target.name]: e.target.value })
   }
-  function handleSelect(e){
+  function handleSelect(){
 
     const {durationNum, durationText} = durationString
     setValues({
@@ -54,7 +60,12 @@ function CreateActivity() {
       duration: `${durationNum} ${durationText}`
     })
   }
-
+  
+   /* changes on the countries multi-select */
+  function handleCountries(e) {
+    let value = Array.from(e.target.selectedOptions, (select) => select.value);
+    setSelected([...selected, value].flatMap((e) => e));
+  }
   /*  sends the country input changes to the values state  */
   const handleClick = () => {
     setValues({
@@ -63,15 +74,14 @@ function CreateActivity() {
     });
   };
 
-  function handleCountries(e) {
-    let value = Array.from(e.target.selectedOptions, (select) => select.value);
-    setSelected([...selected, value].flatMap((e) => e));
-
-    // if(!selected.find(d => d === e.target.value)){
-    //   setSelected([...selected, e.target.value])
-    // }else{
-    //   setSelected(selected.filter(d => d !== e.target.value))
-    // }
+  const handleRemove = (index)=>{
+    const list = [...selected];
+    list.splice(index, 1);
+    setSelected(list)
+    setValues({
+      ...values,
+      country: list,
+    });
   }
 
   /*  VALIDATIONS  */
@@ -152,10 +162,12 @@ function CreateActivity() {
 
   return (
     <div className={style.formContainer}>
-      <Nav />
+      <Link to='/countries' className={style.cta}>
+       <span>Go Home</span> 
+      </Link>
       <div className={style.formBox}>
         <h3>Create your activity</h3>
-        <form onSubmit={handleSubmit}>
+        <form className={style.form} onSubmit={handleSubmit}>
           <label>
             Name:{" "}
             <input
@@ -170,7 +182,7 @@ function CreateActivity() {
           </label>
           <div className={style.validation}>{nameVal}</div>
           <label>
-            Difficulty: {difficulty}
+            Difficulty (From 1 to 5): {difficulty}
             <input
               name="difficulty"
               value={difficulty}
@@ -185,30 +197,32 @@ function CreateActivity() {
           <div className={style.validation}>{difficultyVal}</div>
           <label>
             Duration:{" "}
-            <input
-              type="number"
-              name="durationNum"
-              value={durationNum}
-              min={0}
-              max={100}
-              onChange={handleDuration}
-              onBlur={validateOne}
-              required
-            />
-            <select
-              name="durationText"
-              defaultValue=""
-              value={durationText}
-              onChange={handleDuration}
-              onBlur={handleSelect}
-            >
-              <option value="" disabled>
-                Time
-              </option>
-              <option value="minutes">Minutes</option>
-              <option value="hours">Hours</option>
-              <option value="days">Days</option>
-            </select>
+            <div className={style.duration}>
+              <input
+                type="number"
+                name="durationNum"
+                value={durationNum}
+                min={0}
+                max={100}
+                onChange={handleDuration}
+                onBlur={validateOne}
+                required
+              />
+              <select
+                name="durationText"
+                defaultValue=""
+                value={durationText}
+                onChange={handleDuration}
+                onBlur={handleSelect}
+              >
+                <option value="" disabled>
+                  Time
+                </option>
+                <option value="minutes">Minutes</option>
+                <option value="hours">Hours</option>
+                <option value="days">Days</option>
+              </select>
+            </div>
           </label>
           <div className={style.validation}>{durationNumVal}</div>
           <label>
@@ -220,7 +234,6 @@ function CreateActivity() {
               onBlur={validateOne}
             >
               <option value="" disabled>
-                {" "}
                 Season{" "}
               </option>
               <option value="fall">Fall</option>
@@ -239,13 +252,33 @@ function CreateActivity() {
               onBlur={validateOne}
               multiple={true}
             >
-              {countries.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0)).map((e, index) => (
-                <option key={index}>{e.name}</option>
-              ))}
+              {countries
+                .sort((a, b) =>
+                  a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+                )
+                .map((e, index) => (
+                  <option key={index}>{e.name}</option>
+                ))}
             </select>
           </label>
+          {" "}
           <div className={style.validation}>{countryVal}</div>
-          <button> Create </button>
+          <span>
+            {selected.map((e, index) => (
+              <div key={index} className={style.firstDivision}>
+                <p>{e}
+                  <button
+                    type="button"
+                    className={style.removeBtn}
+                    onClick={() => handleRemove(index)}
+                  >
+                  <span>x</span>
+                  </button>
+                </p>
+              </div>
+            ))}
+          </span>
+          <button className={style.send}> Create </button>
         </form>
       </div>
     </div>

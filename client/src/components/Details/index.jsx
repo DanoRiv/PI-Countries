@@ -29,19 +29,18 @@ function CountryDetail() {
         {details.hasOwnProperty('error') ? <Error/> :
         name ? (
           <div className={style.detailsContainer}>
-            <div className={style.details}>
-            <h4>{name}</h4>
-            <p>{id}</p>
+            <div className={`${style.item} ${style.details}`}>
+            <h4>{name} {id}</h4>
             <img src={flag} alt={name} />
               <span>
                 <p>Continent: {continent}</p>
                 <p>Capital: {capital}</p>
                 <p>Subregion: {subregion}</p>
-                <p>Area: {Number(area).toLocaleString('es')}</p>
+                <p>Area: {Number(area).toLocaleString('es')} km²</p>
                 <p>Population: {Number(population).toLocaleString('es')}</p>
               </span>
             </div>
-              <div className={style.activityCard}>
+              <div className={`${style.item} ${style.activityCard}`}>
                 {activities.map((e, index) => (
                   <div key={index}>
                     <h3>Activities</h3>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import { getCountries } from '../../redux/actions';
+import { clearPage, getCountries } from '../../redux/actions';
 import CountryCard from '../Cards'
 import Error from '../Error';
 import Filters from '../Filters';
@@ -17,6 +17,10 @@ function Home() {
   
   useEffect(() => {
     dispatch(getCountries())
+
+    return()=>{
+      dispatch(clearPage())
+    }
   }, [dispatch]);
 
   //Get continents

@@ -1,22 +1,23 @@
 .formContainer {
-    margin-top: 6rem;
+    margin-top: 2rem;
     display: flex;
     align-content: center;
     justify-content: center;
     width: 100%;
-    height: 80vh;
+    height: 120vh;
 }
 
 .formBox {
-    background-color: #38b81f;
-    width: 60%;
-    height: 100%;
-    margin: 0, auto;
+    background:linear-gradient(90deg, #1A2980, #26D0CE);
+    width: 80%;
+    height: 110%;
+    margin: auto;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    color: #f1faee;
 }
 
 .formBox h3 {
@@ -28,3 +29,168 @@
     text-align: left;
     display: block;
 }
+
+.form {
+    margin-left: 7rem;
+    --width-of-input: 500px;
+    --border-height: 1px;
+    --border-before-color: rgba(221, 221, 221, 0.39);
+    --border-after-color: #5891ff;
+    --input-hovered-color: #4985e01f;
+    width: var(--width-of-input);
+}
+
+.form input,
+.form select,
+.form option {
+
+    /* border: 1px solid #EE9B00;
+    outline: none;
+    padding: 0 0.5rem;
+    border-radius: 5px;
+    width: 50vw; */
+    padding: 0.05rem;
+    margin: 0.8rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    box-sizing: border-box;
+
+    border: none;
+    border-bottom: var(--border-height) solid var(--border-before-color);
+}
+
+.form input:hover,
+.form select:hover,
+.form option:hover {
+    background: var(--input-hovered-color);
+}
+
+.form input:focus,
+.form select:focus,
+.form option:focus{
+    outline: none;
+}
+
+.form input:focus ~ .inputBorder {
+    width: 100%;
+}
+
+.inputBorder {
+    background: var(--border-after-color);
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s;
+}
+
+.form .send {
+    cursor: pointer;
+    font-weight: 900;
+    font-variant: small-caps;
+    border: none;
+    font-family: inherit;
+    color: #fff;
+    width: 9em;
+    height: 3em;
+    line-height: 2em;
+    text-align: center;
+    background: linear-gradient(90deg,#C04848, #480048);
+    background-size: 300%;
+    border-radius: 8px;
+    padding: 8px;
+    z-index: 1;
+}
+
+.duration{
+    display: flex;
+    
+}
+
+.duration input, 
+.duration select{
+    width: 50%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.form .validation {
+    font-size: small;
+    color: #ffba08;
+}
+
+.cta {
+    position: relative;
+    margin: auto;
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    text-decoration: none;
+   }
+   
+   .cta:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50px;
+    background: #b1dae7;
+    width: 45px;
+    height: 45px;
+    transition: all 0.3s ease;
+   }
+   
+   .cta span {
+    position: relative;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #234567;
+   }
+   
+   .cta svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #234567;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+   }
+   
+   .cta:hover:before {
+    width: 100%;
+    background: #b1dae7;
+   }
+   
+   .cta:hover svg {
+    transform: translateX(0);
+   }
+   
+   .cta:active {
+    transform: scale(0.95);
+   }
+
+   .removeBtn{
+    cursor: pointer;
+    font-weight: 900;
+    font-variant: small-caps;
+    border: none;
+    font-family: inherit;
+    color: #fff;
+    text-align: center;
+    background: linear-gradient(90deg,#C04848, #480048);
+    background-size: 300%;
+    border-radius: 3px;
+    z-index: 1;
+   }

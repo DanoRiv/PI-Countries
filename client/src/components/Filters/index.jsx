@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { filterActivity, filterContinent, sortAlpha, sortPopulation } from '../../redux/actions';
+import style from './filter.module.css'
 
 function Filters({setPage, continents, activities}) {
 
@@ -24,7 +25,7 @@ function Filters({setPage, continents, activities}) {
   }
   
   return (
-    <div>
+    <div className={style.filters}>
       <div>
         <select defaultValue="" onChange={handleAz}>
           <option value="">Sort alphabetic</option>

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { clearError, createActivity, getCountries } from '../../redux/actions';
-import Nav from '../Nav';
+import { clearPage, createActivity, getCountries } from '../../redux/actions';
 import style from './form.module.css'
 
 function CreateActivity() {
@@ -13,6 +12,10 @@ function CreateActivity() {
 
   useEffect(() => {
     dispatch(getCountries())
+
+    return()=>{
+      dispatch(clearPage())
+    }
   }, [dispatch]);
 
   const [selected, setSelected] = useState([]);
@@ -64,7 +67,9 @@ function CreateActivity() {
    /* changes on the countries multi-select */
   function handleCountries(e) {
     let value = Array.from(e.target.selectedOptions, (select) => select.value);
-    setSelected([...selected, value].flatMap((e) => e));
+    if(!selected.includes(value.toString())){
+      setSelected([...selected, value].flatMap((e) => e));
+    }
   }
   /*  sends the country input changes to the values state  */
   const handleClick = () => {

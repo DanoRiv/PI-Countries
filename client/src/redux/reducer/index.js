@@ -100,6 +100,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case CLEAR_PAGE:
       return {
         ...state,
+        countries: [],
         details: {},
       };
     case CLEAR_ERROR:

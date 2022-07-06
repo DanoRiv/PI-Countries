@@ -42,9 +42,6 @@ function Home() {
   const sliced = countries.slice(indexOfFirstPage, indexOfLastPage)
   const maxPages = Math.ceil(countries.length / postPerPage);
 
-
-
-
   return (
     <div className={style.homeContainer}>
       { error.hasOwnProperty('error') ? <Error/> :
@@ -54,8 +51,12 @@ function Home() {
         <Pagination setCurrentPage={setCurrentPage} page={currentPage} max={maxPages}/>
         <Filters setPage={setCurrentPage} continents={unique} activities={uniqueAct}/>
       </nav>
-        {countries.length &&
-        <CountryCard card={sliced}/>} 
+        {countries.length ?
+        <CountryCard card={sliced}/> : (<img
+          src="https://pro2-bar-s3-cdn-cf.myportfolio.com/6c02e4e336ef5e266bdd14c6198fcfe8/189fa684-cfd4-4f1b-999a-a705871b9bfe_rwc_214x269x1093x1093x1093.gif?h=f6feb9b0ce51926e3cca85c6ea1328c5"
+          alt="loading..."
+          className={style.loadingGif}
+        />)} 
       </>
       }
     </div>

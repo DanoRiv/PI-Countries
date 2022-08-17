@@ -30,7 +30,7 @@ function CountryDetail() {
         name ? (
           <div className={style.detailsContainer}>
             <div className={`${style.item} ${style.details}`}>
-            <h4>{name} {id}</h4>
+            <h4>{name} - {id}</h4>
             <img src={flag} alt={name} />
               <span>
                 <p>Continent: {continent}</p>
@@ -40,7 +40,7 @@ function CountryDetail() {
                 <p>Population: {Number(population).toLocaleString('es')}</p>
               </span>
             </div>
-              <div className={`${style.item} ${style.activityCard}`}>
+              {activities.length && <div className={`${style.item} ${style.activityCard}`}>
                 {activities.map((e, index) => (
                   <div key={index}>
                     <h3>Activities</h3>
@@ -50,7 +50,7 @@ function CountryDetail() {
                   <p>Season: {e.season}</p>
                   </div>
                 ))}
-              </div>
+              </div>}
           </div>
         ) : (
           <img

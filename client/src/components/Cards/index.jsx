@@ -9,14 +9,12 @@ function CountryCard({ card }) {
         const { id, name, continent, flag } = c;
         return (
           <div key={id} className={style.countrycard}>
-            <div>
               <Link to={`/countries/${id}`}>
-                <img src={flag} alt={name} height={213} width={320}/>
+                <img src={flag} alt={name} height={213} width={320} className={style.flag}/>
                 <h4>{name}</h4>
                 <h5>Continent</h5>
                 <span>{continent}</span>
               </Link>
-            </div>
           </div>
         );
       }) : 

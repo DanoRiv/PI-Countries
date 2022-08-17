@@ -4,7 +4,8 @@
   align-items: center;
 }
 body{
-  background-color: #caf0f8;
+  background-image: url('./images/HD-wallpaper-linear-world-map-creative-world-map-concept-art-world-map-on-black-background-world-maps.jpg');
+  background-size: cover;
 }
 /* 
 .App-logo {
